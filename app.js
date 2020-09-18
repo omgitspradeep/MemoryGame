@@ -2,6 +2,12 @@
 
 document.addEventListener('DOMContentLoaded',()=>{
 
+	const toggle= document.querySelector('#toggle');
+	toggle.addEventListener('change',(e)=>{
+		document.body.classList.toggle("dark",e.target.checked);
+	});
+
+
 	const cardList = [
     	{
 			name:'mom',
@@ -67,14 +73,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 			name:'hotdog',
 			img:'images/hotdog.png'
 		},{
-			name:'ice-cream',
-			img:'images/ice-cream.png'
+			name:'bbka',
+			img:'images/bbka.jpg'
 		},{
 			name:'hotdog',
 			img:'images/hotdog.png'
 		},{
-			name:'ice-cream',
-			img:'images/ice-cream.png'
+			name:'bbka',
+			img:'images/bbka.jpg'
 		}
   ]
 
@@ -139,9 +145,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 			allCards[selectedCardIds[0]].setAttribute('src','images/white.png');
 			allCards[selectedCardIds[1]].setAttribute('src','images/white.png');
 			if( wonCards.length === cardList.length/2){
+				
 				result.textContent= "बधाई छ! तपाईंले खेल जित्नुभयो :)";
-				var winner = prompt("तपाईंको नाम के होला?")
-				setHighScoreContent(winner,chanceCounter)
+				if(localStorage.getItem('highscore') >= chanceCounter){
+					var winner = prompt("तपाईंको नाम के होला?")
+					setHighScoreContent(winner,chanceCounter)
+				}
+				hideStage();
+
 			}
 
 		}else{
@@ -175,7 +186,35 @@ document.addEventListener('DOMContentLoaded',()=>{
 	function setHighScoreContent(player,chances){
 		localStorage.setItem('highscore',chances);
 		localStorage.setItem('player',player);
+		highscoreRecord.textContent=getHighScoreContent();
+
+		if(player !== "Chrome"){
+			setInterval(createHeart,300);
+
+		}
 	}
+
+	// to remove all the images after game is over.
+	function hideStage(){
+		stage.style.display = "none";
+	}
+	// to create the raining name of winner
+	function createHeart(){
+	    const heart= document.createElement('div');
+	    heart.classList.add('heart');
+	    heart.innerText=localStorage.getItem('player')
+	    heart.style.left=Math.random()*100+"vw";
+	    heart.style.color=`hsl(${Math.floor(Math.random()*360)}, 100%, 50%)`;
+	    heart.style.animationDuration = Math.random()*2 +3 +"s"
+
+	    document.body.appendChild(heart);
+
+		    setTimeout(()=>{
+		        heart.remove();
+		    },5000);
+	}
+	
+
 	playground();
 
-})
+});
