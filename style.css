@@ -2,8 +2,7 @@
 	display:flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	position: fixed;
-	right: 50%;
+	position: relative;
 	width: 400px;
 	height: 400px;
 }

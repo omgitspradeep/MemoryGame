@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Memory game</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="app.js" type="text/javascript" charset="utf-8"></script>
-</head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+   
+  </head>
+  <body>
+    <div class="container">
+        <div class="toggle-container">
+            <input type="checkbox" id="toggle" name="toggle"/>
+            <label for="toggle" id="label">|☰|</label>
+	      </div>
 
-<body>
 
-	<div class="toggle-container">
-		<input type="checkbox" id="toggle" name="toggle"/>
-		<label for="toggle" id="label">|☰|</label>
-	</div>
+        <h1>Score:
+            <span id="score">0</span>
+        </h1>
 
+        <h1>Chance: 
+            <span id="chance">0</span>
+        </h1>
 
-	<h1>Score:
-		<span id="score">0</span>
-	</h1>
+        <h3>Highscrore (      
+            <span id="scoreRecord" ></span>
+            )
+        </h3>
 
-	<h1>Chance: 
-		<span id="chance">0</span>
-	</h1>
-
-	<h3>Highscrore (      
-		<span id="scoreRecord" ></span>
-		)
-	</h3>
-
-	<div class="grid">
-	</div>
-
-</body>
+        <div class="grid"> </div>
+    </div> 
+  </body>
 </html>
